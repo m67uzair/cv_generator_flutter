@@ -1,4 +1,5 @@
-import 'package:cv_generator/screens/experience_screen.dart';
+import 'package:cv_generator/screens/add_education_screen.dart';
+import 'package:cv_generator/screens/add_experience_screen.dart';
 import 'package:cv_generator/screens/personal_details_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
@@ -43,7 +44,7 @@ class MyApp extends StatelessWidget {
               child: CircularProgressIndicator(),
             );
           } else if (snaphot.hasData) {
-            return const AddExperienceScreen();
+            return const AddEducationScreen();
           } else {
             return const AuthPage();
           }

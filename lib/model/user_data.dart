@@ -65,4 +65,20 @@ class UserData extends ChangeNotifier {
 
     notifyListeners();
   }
+
+  void updateEducation(
+      {required String instituteName,
+      required String course,
+      required String fromDate,
+      required String toDate,
+      required int index}) {
+    experienceList[index] = {
+      "instituteName": instituteName,
+      "course": course,
+      "from": fromDate,
+      "to": toDate
+    };
+
+    notifyListeners();
+  }
 }

@@ -87,7 +87,9 @@ class CardGrid extends StatelessWidget {
                   context: context,
                   builder: (context) => CostumeAlertDialogue(
                     context: context,
-                    buttonTitle: "Update Experience",
+                    buttonTitle: title == "companyName"
+                        ? "Update Experience"
+                        : "Update Education",
                     instituteType: title.toString(),
                     occupationType: subtitle,
                     instituteTypeController: updatedInstituteTypeController,
@@ -95,14 +97,23 @@ class CardGrid extends StatelessWidget {
                     fromController: updatedFromController,
                     toController: updatedToController,
                     onPressed: () {
-                      user.updateExperience(
-                          companyName:
-                              updatedInstituteTypeController.text.trim(),
-                          occupation:
-                              updatedOccupationTypeController.text.trim(),
-                          fromDate: updatedFromController.text.trim(),
-                          toDate: updatedToController.text.trim(),
-                          index: index);
+                      title == "companyName"
+                          ? user.updateExperience(
+                              companyName:
+                                  updatedInstituteTypeController.text.trim(),
+                              occupation:
+                                  updatedOccupationTypeController.text.trim(),
+                              fromDate: updatedFromController.text.trim(),
+                              toDate: updatedToController.text.trim(),
+                              index: index)
+                          : user.updateEducation(
+                              instituteName:
+                                  updatedInstituteTypeController.text.trim(),
+                              course:
+                                  updatedOccupationTypeController.text.trim(),
+                              fromDate: updatedFromController.text.trim(),
+                              toDate: updatedToController.text.trim(),
+                              index: index);
                     },
                   ),
                 );
