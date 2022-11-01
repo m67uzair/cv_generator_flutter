@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "297014082522",
+    "project_id": "cv-generator-18125",
+    "storage_bucket": "cv-generator-18125.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:297014082522:android:ecfd433ff4e1493655dee3",
+        "android_client_info": {
+          "package_name": "com.example.cv_generator"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "297014082522-kt9h8t601jfjflm4bn02vvf7lj5q9rjd.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBuAL9pX56BlxlVLbSI30m2ie2GqffcqF8"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "297014082522-kt9h8t601jfjflm4bn02vvf7lj5q9rjd.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
