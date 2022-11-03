@@ -38,6 +38,14 @@ class MyApp extends StatelessWidget {
       theme: ThemeData(
         primarySwatch: Colors.blue,
       ),
+      routes: {
+        '/optionsScreen': (context) => const OptionsScreen(),
+        '/personalInfoScreen': (context) => const PersonalDetails(),
+        '/educationScreen': (context) => const AddEducationScreen(),
+        '/experienceScreen': (context) => const AddExperienceScreen(),
+        '/skillsScreen': (context) => const AddSkillsScreen(),
+        '/referenceScreen': (context) => const AddEducationScreen(),
+      },
       home: StreamBuilder<User?>(
         stream: FirebaseAuth.instance.authStateChanges(),
         builder: (context, snaphot) {
