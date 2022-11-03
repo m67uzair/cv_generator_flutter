@@ -13,10 +13,18 @@ class OptionsScreen extends StatelessWidget {
         padding: const EdgeInsets.symmetric(horizontal: 15),
         child: SingleChildScrollView(
           child: SizedBox(
-            height: 800,
+            height: 700,
             child: Column(
               mainAxisAlignment: MainAxisAlignment.spaceEvenly,
               children: [
+                const SizedBox(height: 40),
+                CustomOptionWidget(
+                  title: 'Objective',
+                  icon: Icons.add_task,
+                  onTap: () {
+                    Navigator.pushNamed(context, '/objectiveScreen');
+                  },
+                ),
                 const SizedBox(height: 20),
                 CustomOptionWidget(
                   title: 'Personal Info',

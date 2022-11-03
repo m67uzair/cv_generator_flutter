@@ -1,5 +1,6 @@
 import 'package:cv_generator/screens/add_education_screen.dart';
 import 'package:cv_generator/screens/add_experience_screen.dart';
+import 'package:cv_generator/screens/add_objective_screen.dart';
 import 'package:cv_generator/screens/add_skills_screen.dart';
 import 'package:cv_generator/screens/options_screen.dart';
 import 'package:cv_generator/screens/personal_details_screen.dart';
@@ -44,7 +45,7 @@ class MyApp extends StatelessWidget {
         '/educationScreen': (context) => const AddEducationScreen(),
         '/experienceScreen': (context) => const AddExperienceScreen(),
         '/skillsScreen': (context) => const AddSkillsScreen(),
-        '/referenceScreen': (context) => const AddEducationScreen(),
+        '/objectiveScreen': (context) => const AddObjectiveScreen(),
       },
       home: StreamBuilder<User?>(
         stream: FirebaseAuth.instance.authStateChanges(),
