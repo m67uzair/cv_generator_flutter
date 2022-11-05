@@ -66,7 +66,8 @@ class DefaultFirebaseOptions {
     messagingSenderId: '297014082522',
     projectId: 'cv-generator-18125',
     storageBucket: 'cv-generator-18125.appspot.com',
-    iosClientId: '297014082522-8b8ai7iilf679sou7h1fo2cts00gf874.apps.googleusercontent.com',
+    iosClientId:
+        '297014082522-8b8ai7iilf679sou7h1fo2cts00gf874.apps.googleusercontent.com',
     iosBundleId: 'com.example.cvGenerator',
   );
 
@@ -76,7 +77,8 @@ class DefaultFirebaseOptions {
     messagingSenderId: '297014082522',
     projectId: 'cv-generator-18125',
     storageBucket: 'cv-generator-18125.appspot.com',
-    iosClientId: '297014082522-8b8ai7iilf679sou7h1fo2cts00gf874.apps.googleusercontent.com',
+    iosClientId:
+        '297014082522-8b8ai7iilf679sou7h1fo2cts00gf874.apps.googleusercontent.com',
     iosBundleId: 'com.example.cvGenerator',
   );
 }

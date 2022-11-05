@@ -13,19 +13,11 @@ class OptionsScreen extends StatelessWidget {
         padding: const EdgeInsets.symmetric(horizontal: 15),
         child: SingleChildScrollView(
           child: SizedBox(
-            height: 700,
+            // height: 700,
             child: Column(
               mainAxisAlignment: MainAxisAlignment.spaceEvenly,
               children: [
                 const SizedBox(height: 40),
-                CustomOptionWidget(
-                  title: 'Objective',
-                  icon: Icons.add_task,
-                  onTap: () {
-                    Navigator.pushNamed(context, '/objectiveScreen');
-                  },
-                ),
-                const SizedBox(height: 20),
                 CustomOptionWidget(
                   title: 'Personal Info',
                   icon: Icons.person,
@@ -55,6 +47,30 @@ class OptionsScreen extends StatelessWidget {
                   icon: Icons.psychology,
                   onTap: () {
                     Navigator.pushNamed(context, '/skillsScreen');
+                  },
+                ),
+                const SizedBox(height: 20),
+                CustomOptionWidget(
+                  title: 'Projects',
+                  icon: Icons.add_task,
+                  onTap: () {
+                    Navigator.pushNamed(context, '/projectScreen');
+                  },
+                ),
+                const SizedBox(height: 20),
+                CustomOptionWidget(
+                  title: 'Languages',
+                  icon: Icons.language,
+                  onTap: () {
+                    Navigator.pushNamed(context, '/languageScreen');
+                  },
+                ),
+                const SizedBox(height: 20),
+                CustomOptionWidget(
+                  title: 'Links',
+                  icon: Icons.link,
+                  onTap: () {
+                    Navigator.pushNamed(context, '/linkScreen');
                   },
                 ),
               ],

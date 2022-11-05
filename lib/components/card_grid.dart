@@ -21,6 +21,7 @@ class CardGrid extends StatelessWidget {
         TextEditingController();
     TextEditingController updatedFromController = TextEditingController();
     TextEditingController updatedToController = TextEditingController();
+    final _formKey = GlobalKey<FormState>();
 
     return GridView.builder(
         gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
@@ -115,6 +116,7 @@ class CardGrid extends StatelessWidget {
                               toDate: updatedToController.text.trim(),
                               index: index);
                     },
+                    formKey: _formKey,
                   ),
                 );
               },

@@ -21,6 +21,7 @@ class _FillDetailsScreenState extends State<FillDetailsScreen> {
     TextEditingController courseController = TextEditingController();
     TextEditingController stdFromController = TextEditingController();
     TextEditingController stdToController = TextEditingController();
+    final _formKey = GlobalKey<FormState>();
     return Scaffold(
       appBar: AppBar(
         title: const Text("Fill The Details"),
@@ -273,6 +274,7 @@ class _FillDetailsScreenState extends State<FillDetailsScreen> {
                               toDate: stdToController.text,
                             );
                           },
+                          formKey: _formKey,
                         ),
                       ),
                     )

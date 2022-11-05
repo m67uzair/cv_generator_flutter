@@ -16,6 +16,7 @@ class _AddEducationScreenState extends State<AddEducationScreen> {
   TextEditingController courseController = TextEditingController();
   TextEditingController stdFromController = TextEditingController();
   TextEditingController stdToController = TextEditingController();
+  final _formKey = GlobalKey<FormState>();
 
   @override
   Widget build(BuildContext context) {
@@ -25,15 +26,18 @@ class _AddEducationScreenState extends State<AddEducationScreen> {
           title: const Text("Add Education"),
         ),
         body: Column(
+          crossAxisAlignment: CrossAxisAlignment.start,
           children: [
             const SizedBox(
               height: 60,
             ),
-            const Text(
-              "Add Your Education",
-              style: TextStyle(
-                fontWeight: FontWeight.w600,
-                fontSize: 18,
+            const Center(
+              child: Text(
+                "Add Your Education",
+                style: TextStyle(
+                  fontWeight: FontWeight.w600,
+                  fontSize: 18,
+                ),
               ),
             ),
             const Divider(
@@ -41,14 +45,38 @@ class _AddEducationScreenState extends State<AddEducationScreen> {
               indent: 4,
               endIndent: 4,
             ),
-            Expanded(
-              child: CardGrid(
-                list: user.educationList,
-                title: 'instituteName',
-                subtitle: 'course',
-                user: user,
+            if (user.educationList.isNotEmpty)
+              Expanded(
+                child: CardGrid(
+                  list: user.educationList,
+                  title: 'instituteName',
+                  subtitle: 'course',
+                  user: user,
+                ),
               ),
-            ),
+            if (user.educationList.isNotEmpty)
+              Padding(
+                padding: const EdgeInsets.only(bottom: 8, left: 32),
+                child: ElevatedButton(
+                  onPressed: () {
+                    Navigator.pushNamed(context, '/experienceScreen');
+                  },
+                  style: ButtonStyle(
+                      padding: MaterialStateProperty.all(
+                          const EdgeInsets.symmetric(
+                              vertical: 10, horizontal: 32)),
+                      backgroundColor:
+                          MaterialStateProperty.all(Colors.pinkAccent),
+                      shape: MaterialStateProperty.all(
+                          const RoundedRectangleBorder(
+                              borderRadius:
+                                  BorderRadius.all(Radius.circular(16))))),
+                  child: const Text(
+                    'Next',
+                    style: TextStyle(fontSize: 16),
+                  ),
+                ),
+              )
           ],
         ),
         floatingActionButton: FloatingActionButton.extended(
@@ -69,12 +97,16 @@ class _AddEducationScreenState extends State<AddEducationScreen> {
                     fromController: stdFromController,
                     toController: stdToController,
                     onPressed: () {
-                      user.addEducation(
-                          instituteName: instituteNameController.text,
-                          course: courseController.text,
-                          fromDate: stdFromController.text,
-                          toDate: stdToController.text);
+                      if (_formKey.currentState!.validate()) {
+                        user.addEducation(
+                            instituteName:
+                                instituteNameController.text.toUpperCase(),
+                            course: courseController.text.toUpperCase(),
+                            fromDate: stdFromController.text,
+                            toDate: stdToController.text);
+                      }
                     },
+                    formKey: _formKey,
                   ),
                 ),
               ),

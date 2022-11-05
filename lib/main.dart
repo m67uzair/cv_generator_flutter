@@ -1,9 +1,15 @@
 import 'package:cv_generator/screens/add_education_screen.dart';
 import 'package:cv_generator/screens/add_experience_screen.dart';
-import 'package:cv_generator/screens/add_objective_screen.dart';
+import 'package:cv_generator/screens/add_languages_screen.dart';
+import 'package:cv_generator/screens/add_links_screen.dart';
+import 'package:cv_generator/screens/add_projects_screen.dart';
 import 'package:cv_generator/screens/add_skills_screen.dart';
+import 'package:cv_generator/screens/available_user_data_screen.dart';
+import 'package:cv_generator/screens/home_screen.dart';
 import 'package:cv_generator/screens/options_screen.dart';
 import 'package:cv_generator/screens/personal_details_screen.dart';
+import 'package:cv_generator/screens/resume_maker.dart';
+
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:firebase_core/firebase_core.dart';
@@ -34,6 +40,7 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
+      debugShowCheckedModeBanner: false,
       navigatorKey: navigatorKey,
       title: 'CV Generator',
       theme: ThemeData(
@@ -45,17 +52,22 @@ class MyApp extends StatelessWidget {
         '/educationScreen': (context) => const AddEducationScreen(),
         '/experienceScreen': (context) => const AddExperienceScreen(),
         '/skillsScreen': (context) => const AddSkillsScreen(),
-        '/objectiveScreen': (context) => const AddObjectiveScreen(),
+        '/projectScreen': (context) => const AddProjectsScreen(),
+        '/languageScreen': (context) => const AddLanguagesScreen(),
+        '/linkScreen': (context) => const AddLinksScreen(),
+        '/resumeMaker': (context) => ResumeMaker(),
+        '/homeScreen': (context) => HomeScreen(),
+        '/availableUserDataScreen': (context) => AvailableUserDataScreen(),
       },
       home: StreamBuilder<User?>(
         stream: FirebaseAuth.instance.authStateChanges(),
-        builder: (context, snaphot) {
-          if (snaphot.connectionState == ConnectionState.waiting) {
+        builder: (context, snapshot) {
+          if (snapshot.connectionState == ConnectionState.waiting) {
             return const Center(
               child: CircularProgressIndicator(),
             );
-          } else if (snaphot.hasData) {
-            return const OptionsScreen();
+          } else if (snapshot.hasData) {
+            return HomeScreen();
           } else {
             return const AuthPage();
           }

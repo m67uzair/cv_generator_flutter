@@ -8,12 +8,14 @@ class CostumeAlertDialogue extends StatefulWidget {
       occupationTypeController,
       fromController,
       toController;
+  final formKey;
   // final UserData user;
   final void Function() onPressed;
 
-  CostumeAlertDialogue({
+  const CostumeAlertDialogue({
     super.key,
     required BuildContext context,
+    required this.formKey,
     required this.buttonTitle,
     required this.instituteType,
     required this.occupationType,
@@ -48,12 +50,19 @@ class _CostumeAlertDialogueState extends State<CostumeAlertDialogue> {
         width: 600,
         height: 400,
         child: Form(
+          key: widget.formKey,
           child: Column(
             mainAxisSize: MainAxisSize.min,
             children: <Widget>[
               Padding(
                 padding: const EdgeInsets.all(8.0),
                 child: TextFormField(
+                  validator: (value) {
+                    if (value == null || value.isEmpty) {
+                      return 'Please Provide value';
+                    }
+                    return null;
+                  },
                   controller: widget.occupationTypeController,
                   decoration: InputDecoration(
                     contentPadding:
@@ -70,6 +79,12 @@ class _CostumeAlertDialogueState extends State<CostumeAlertDialogue> {
               Padding(
                 padding: const EdgeInsets.all(8.0),
                 child: TextFormField(
+                  validator: (value) {
+                    if (value == null || value.isEmpty) {
+                      return 'Please Provide value';
+                    }
+                    return null;
+                  },
                   controller: widget.instituteTypeController,
                   decoration: InputDecoration(
                     contentPadding:
@@ -99,6 +114,12 @@ class _CostumeAlertDialogueState extends State<CostumeAlertDialogue> {
                   SizedBox(
                     width: 100,
                     child: TextFormField(
+                      validator: (value) {
+                        if (value == null || value.isEmpty) {
+                          return 'Please Provide value';
+                        }
+                        return null;
+                      },
                       controller: widget.fromController,
                       onTap: () async {
                         DateTime? fromDate = await showDatePicker(
@@ -110,7 +131,7 @@ class _CostumeAlertDialogueState extends State<CostumeAlertDialogue> {
                         if (fromDate != null) {
                           debugPrint(fromDate.toString());
                           String formatedToDate =
-                              DateFormat('yyyy-MM-dd').format(fromDate);
+                              DateFormat('MMMM yyyy').format(fromDate);
                           setState(() {
                             widget.fromController.text = formatedToDate;
                           });
@@ -136,6 +157,12 @@ class _CostumeAlertDialogueState extends State<CostumeAlertDialogue> {
                   SizedBox(
                     width: 100,
                     child: TextFormField(
+                      validator: (value) {
+                        if (value == null || value.isEmpty) {
+                          return 'Please Provide value';
+                        }
+                        return null;
+                      },
                       controller: widget.toController,
                       onTap: () async {
                         // ignore: unused_local_variable
@@ -149,7 +176,7 @@ class _CostumeAlertDialogueState extends State<CostumeAlertDialogue> {
                           debugPrint(toDate.toString());
                           // ignore: unused_local_variable
                           String formatedToDate =
-                              DateFormat('yyyy-MM-dd').format(toDate);
+                              DateFormat('MMMM yyyy').format(toDate);
                           setState(() {
                             widget.toController.text = formatedToDate;
                           });

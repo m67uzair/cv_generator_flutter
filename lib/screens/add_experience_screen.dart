@@ -17,6 +17,7 @@ class _AddExperienceScreenState extends State<AddExperienceScreen> {
   TextEditingController occupationController = TextEditingController();
   TextEditingController expFromController = TextEditingController();
   TextEditingController expToController = TextEditingController();
+  final _formKey = GlobalKey<FormState>();
 
   @override
   Widget build(BuildContext context) {
@@ -26,15 +27,18 @@ class _AddExperienceScreenState extends State<AddExperienceScreen> {
           title: const Text("Add Experience"),
         ),
         body: Column(
+          crossAxisAlignment: CrossAxisAlignment.start,
           children: [
             const SizedBox(
               height: 60,
             ),
-            const Text(
-              "Add Your Experiences",
-              style: TextStyle(
-                fontWeight: FontWeight.w600,
-                fontSize: 18,
+            const Center(
+              child: Text(
+                "Add Your Experiences",
+                style: TextStyle(
+                  fontWeight: FontWeight.w600,
+                  fontSize: 18,
+                ),
               ),
             ),
             const Divider(
@@ -50,6 +54,29 @@ class _AddExperienceScreenState extends State<AddExperienceScreen> {
                 user: user,
               ),
             ),
+            if (user.educationList.isNotEmpty)
+              Padding(
+                padding: const EdgeInsets.only(bottom: 8, left: 32),
+                child: ElevatedButton(
+                  onPressed: () {
+                    Navigator.pushNamed(context, '/skillsScreen');
+                  },
+                  style: ButtonStyle(
+                      padding: MaterialStateProperty.all(
+                          const EdgeInsets.symmetric(
+                              vertical: 10, horizontal: 32)),
+                      backgroundColor:
+                          MaterialStateProperty.all(Colors.pinkAccent),
+                      shape: MaterialStateProperty.all(
+                          const RoundedRectangleBorder(
+                              borderRadius:
+                                  BorderRadius.all(Radius.circular(16))))),
+                  child: const Text(
+                    'Next',
+                    style: TextStyle(fontSize: 16),
+                  ),
+                ),
+              )
           ],
         ),
         floatingActionButton: FloatingActionButton.extended(
@@ -70,12 +97,16 @@ class _AddExperienceScreenState extends State<AddExperienceScreen> {
                     fromController: expFromController,
                     toController: expToController,
                     onPressed: () {
-                      user.addExperience(
-                          companyName: companyNameController.text,
-                          occupation: occupationController.text,
-                          fromDate: expFromController.text,
-                          toDate: expToController.text);
+                      if (_formKey.currentState!.validate()) {
+                        user.addExperience(
+                            companyName:
+                                companyNameController.text.toUpperCase(),
+                            occupation: occupationController.text.toUpperCase(),
+                            fromDate: expFromController.text,
+                            toDate: expToController.text);
+                      }
                     },
+                    formKey: _formKey,
                   ),
                 ),
               ),
