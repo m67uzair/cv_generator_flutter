@@ -185,6 +185,8 @@ class UserData extends ChangeNotifier {
     }
     if (url.contains('youtube')) {
       linkList.add(Link(icon: FontAwesomeIcons.youtube, url: url));
+    } else {
+      linkList.add(Link(icon: FontAwesomeIcons.link, url: url));
     }
 
     notifyListeners();
