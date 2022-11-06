@@ -16,7 +16,6 @@ import 'package:firebase_core/firebase_core.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'firebase_options.dart';
 import "package:cv_generator/model/user_data.dart";
-import 'package:cv_generator/screens/fill_details_screen.dart';
 import 'helper/AuthPage.dart';
 
 Future main() async {
@@ -67,7 +66,7 @@ class MyApp extends StatelessWidget {
               child: CircularProgressIndicator(),
             );
           } else if (snapshot.hasData) {
-            return HomeScreen();
+            return const OptionsScreen();
           } else {
             return const AuthPage();
           }

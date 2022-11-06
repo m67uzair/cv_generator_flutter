@@ -1,3 +1,4 @@
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 
 class OptionsScreen extends StatelessWidget {
@@ -8,6 +9,16 @@ class OptionsScreen extends StatelessWidget {
     return Scaffold(
       appBar: AppBar(
         title: const Text("CV Generator"),
+        actions: <Widget>[
+          IconButton(
+            onPressed: () {
+              FirebaseAuth.instance.signOut();
+            },
+            icon: const Icon(
+              Icons.exit_to_app,
+            ),
+          )
+        ],
       ),
       body: Padding(
         padding: const EdgeInsets.symmetric(horizontal: 15),
