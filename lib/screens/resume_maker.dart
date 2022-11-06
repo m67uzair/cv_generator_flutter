@@ -131,6 +131,7 @@ class ResumeMaker extends StatelessWidget {
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: [
               FloatingActionButton.extended(
+                  heroTag: 'btn1',
                   backgroundColor: Colors.amberAccent,
                   onPressed: () {
                     Navigator.pop(context);
@@ -140,6 +141,7 @@ class ResumeMaker extends StatelessWidget {
                     color: Colors.black,
                   )),
               FloatingActionButton.extended(
+                heroTag: 'btn2',
                 backgroundColor: Colors.amberAccent,
                 onPressed: () async {
                   // print('hello');

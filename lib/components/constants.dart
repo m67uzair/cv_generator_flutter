@@ -19,7 +19,7 @@ Future screenToPdf(String fileName, Uint8List screenShot, context) async {
       },
     ),
   );
-  String path = (await getApplicationDocumentsDirectory()).path;
+  String path = (await getExternalStorageDirectory())!.path;
   File pdfFile = await File('$path/$fileName.pdf').create();
 
   pdfFile.writeAsBytesSync(await pdf.save());
